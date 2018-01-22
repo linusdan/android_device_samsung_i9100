@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012 The CyanogenMod Project
+# Copyright 2012 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,36 +14,68 @@
 # limitations under the License.
 #
 
-# This variable is set first, so it can be overridden
-# by BoardConfigVendor.mk
+DEVICE_TREE := device/samsung/i9100
 
--include device/samsung/galaxys2-common/BoardCommonConfig.mk
+CM_PLATFORM_SDK_VERSION := 7	# Required for libf2fs.so
+override TARGET_OUT_VENDOR_SHARED_LIBRARIES = $(TARGET_OUT_SHARED_LIBRARIES)
 
-TARGET_BOARD_INFO_FILE := device/samsung/i9100/board-info.txt
+# Assert
+TARGET_OTA_ASSERT_DEVICE := i9100,GT-I9100,GT-I9100P
 
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/i9100/bluetooth
+# Bootloader
+TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := smdk4210
 
-# Inline kernel building
-TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
-TARGET_KERNEL_CONFIG := cyanogenmod_i9100_defconfig
+# Platform
+TARGET_BOARD_PLATFORM := exynos4
+TARGET_BOARD_PLATFORM_GPU := mali-400mp4
 
-# assert
-TARGET_OTA_ASSERT_DEVICE := galaxys2,i9100,GT-I9100,GT-I9100M,GT-I9100P,GT-I9100T,SC-02C
+# Flags
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
-# Use the non-open-source parts, if they're present
--include vendor/samsung/i9100/BoardConfigVendor.mk
+# Architecture
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT := cortex-a9
+TARGET_CPU_SMP := true
 
-# F2FS Filesystem
+# Boot image
+TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/kernel
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_TREE)/mkbootimg.mk
+BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 consoleblank=0
+BOARD_KERNEL_BASE := 0x40000000
+BOARD_KERNEL_PAGESIZE := 4096
+
+TARGET_HAL_PATH := hardware/samsung/exynos4/hal
+
+# Filesystem
+BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 671088640
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147467264
+BOARD_CACHEIMAGE_PARTITION_SIZE := 104857600
+BOARD_FLASH_BLOCK_SIZE := 4096
+
+# File systems
+BOARD_HAS_LARGE_FILESYSTEM := true
+TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+BOARD_SUPPRESS_SECURE_ERASE := true
 
-# TWRP
+# TWRP specific build flags
 TW_THEME := portrait_mdpi
-TWRP_NEW_THEME := true
 HAVE_SELINUX := true
-TW_MAX_BRIGHTNESS := 255
-TW_INCLUDE_CRYPTO := true
-TW_HAS_DOWNLOAD_MODE := true
-TW_NO_REBOOT_BOOTLOADER := true
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/platform/s5p-tmu/temperature"
+TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 162
+TW_NO_REBOOT_BOOTLOADER := true
+TW_HAS_DOWNLOAD_MODE := true
+TW_INCLUDE_NTFS_3G := true
+TW_MTP_DEVICE := "/dev/mtp_usb"
+TW_EXCLUDE_SUPERSU := true
+
+# Encryption support
+TW_INCLUDE_CRYPTO := true
