@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+TARGET_BOARD_INFO_FILE := device/samsung/i9100/board-info.txt
+
 DEVICE_TREE := device/samsung/i9100
 
 CM_PLATFORM_SDK_VERSION := 7	# Required for libf2fs.so
@@ -88,6 +90,11 @@ TW_USE_TOOLBOX := true
 RECOVERY_SDCARD_ON_DATA := true
 
 CUSTOM_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun0/file"
+BOARD_USES_MMCUTILS := true
+BOARD_HAS_NO_MISC_PARTITION := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_SUPPRESS_EMMC_WIPE := true
+BOARD_RECOVERY_SWIPE := true
 
 # Encryption support
 TW_INCLUDE_CRYPTO := true
