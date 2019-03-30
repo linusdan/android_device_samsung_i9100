@@ -27,6 +27,17 @@ $(call inherit-product, vendor/omni/config/common.mk)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=220
 
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    resize2fs_static \
+    setup_fs
+
+# F2FS Filesystem
+PRODUCT_PACKAGES += \
+    fsck.f2fs \
+    mkfs.f2fs    
+    
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \

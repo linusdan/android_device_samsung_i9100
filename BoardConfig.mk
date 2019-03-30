@@ -69,7 +69,7 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
+#TARGET_USERIMAGES_USE_F2FS := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # TWRP specific build flags
@@ -87,7 +87,7 @@ TW_EXCLUDE_SUPERSU := true
 TW_USE_TOOLBOX := true
 RECOVERY_SDCARD_ON_DATA := true
 
-BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun0/file"
+CUSTOM_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun0/file"
 
 # Encryption support
 TW_INCLUDE_CRYPTO := true
