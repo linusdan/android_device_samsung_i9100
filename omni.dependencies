@@ -1,2 +1,14 @@
 [
+    {
+        "remote":       "gitlab2",
+        "repository":   "linusdan/hardware_samsung",
+        "target_path":  "hardware/samsung",
+        "revision":     "pie-omni"
+    },
+    {
+        "remote":       "gitlab2",
+        "repository":   "linusdan/kernel_samsung_smdk4412",
+        "target_path":  "kernel/samsung/smdk4412",
+        "revision":     "pie"
+    }
 ]
