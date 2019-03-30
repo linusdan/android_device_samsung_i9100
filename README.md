@@ -6,7 +6,10 @@ Add to `.repo/local_manifests/i9100.xml`:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <project name="TeamWin/android_device_samsung_i9100" path="device/samsung/i9100" remote="github" revision="android-7.1" />
+  <remove-project name="android_bootable_recovery" />
+  
+  <project path="device/samsung/i9100" name="linusdan/android_device_samsung_i9100" remote="github" revision="android-7.1" />
+  <project path="bootable/recovery" name="linusdan/android_bootable_recovery" remote="github" revision="android-9.0" />  
 </manifest>
 ```
 
