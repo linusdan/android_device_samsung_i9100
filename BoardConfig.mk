@@ -66,6 +66,7 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 
 # TWRP specific build flags
 TW_THEME := portrait_mdpi
+TW_USE_TOOLBOX := true
 HAVE_SELINUX := true
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/platform/s5p-tmu/temperature"
