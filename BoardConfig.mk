@@ -78,3 +78,6 @@ TW_MTP_DEVICE := "/dev/mtp_usb"
 
 # Encryption support
 TW_INCLUDE_CRYPTO := true
+
+# Parted tool
+TW_INCLUDE_PARTED := true
