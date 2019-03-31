@@ -99,3 +99,6 @@ BOARD_RECOVERY_SWIPE := true
 
 # Encryption support
 TW_INCLUDE_CRYPTO := true
+
+# Parted tool
+TW_INCLUDE_PARTED := true
